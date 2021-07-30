@@ -27,7 +27,7 @@ const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUser>({} as IUser);
   const [userLoading, setUserLoading] = useState<boolean>(true);
 
-  // TODO Function SignInWithGoogle
+  // TODO SignInWithGoogle
 
   const signInWithApple = async () => {
     try {
