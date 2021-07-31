@@ -12,7 +12,8 @@
       "**/*"
     ],
     "android": {
-      "jsEngine": "hermes"
+      "jsEngine": "hermes",
+      "package": "com.claitonneri.minhasfinancas"
     }
   },
   "name": "minhasfinancas"
