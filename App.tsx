@@ -13,12 +13,17 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 import codePush from "react-native-code-push";
+import * as Sentry from "@sentry/react-native";
 
 import Routes from './src/routes';
 
 import { AuthProvider, useAuth } from './src/hooks/auth';
 
 import theme from './src/styles/theme';
+
+Sentry.init({
+  dsn: "https://110dbe9b72144a70ae96ab0f78c172be@o938136.ingest.sentry.io/5888211",
+});
 
 const App: React.FC = () => {
   const { userLoading } = useAuth();
