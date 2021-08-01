@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 import AppLoading from 'expo-app-loading';
@@ -12,6 +12,7 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
+import codePush from "react-native-code-push";
 
 import Routes from './src/routes';
 
@@ -27,6 +28,12 @@ const App: React.FC = () => {
     Poppins_700Bold,
   });
 
+  useEffect(() => {
+    codePush.sync({
+      installMode: codePush.InstallMode.IMMEDIATE
+    })
+  }, []);
+
   if (!fontsLoaded && !userLoading) {
     return <AppLoading />;
   }
@@ -41,4 +48,6 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME
+})(App);
